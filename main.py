@@ -12,9 +12,9 @@ loaded_model = joblib.load("best_model.pkl")
 script_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Load the trained regression model
-model_path = os.path.join(script_directory, 'regression.pkl')
+model_path = os.path.join(script_directory, 'best_model.pkl')
 with open(model_path, 'rb') as file:
-    regression_model = pickle.load(file)
+    best_model = pickle.load(file)
 
 # Set the title
 st.title("SADC GDP Predictor")

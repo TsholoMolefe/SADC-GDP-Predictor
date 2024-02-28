@@ -2,9 +2,19 @@ import streamlit as st
 import pandas as pd
 import joblib
 from sklearn.preprocessing import LabelEncoder
+import pickle
+import os
 
 # Load the best model
 loaded_model = joblib.load("best_model.pkl")
+
+# Get the absolute path to the directory of this script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Load the trained regression model
+model_path = os.path.join(script_directory, 'regression.pkl')
+with open(model_path, 'rb') as file:
+    regression_model = pickle.load(file)
 
 # Set the title
 st.title("SADC GDP Predictor")
@@ -43,4 +53,3 @@ prediction = loaded_model.predict(new_data)
 
 # Display the prediction
 st.write(f'Predicted GDP: {prediction[0]}')
-

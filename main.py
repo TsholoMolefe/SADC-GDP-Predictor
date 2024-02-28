@@ -46,10 +46,11 @@ for column in new_data_columns:
 
 # Encoding 'Country Name' using LabelEncoder
 label_encoder = LabelEncoder()
-new_data['Country Name'] = label_encoder.fit_transform(new_data['Country Name'])
+new_data['Country Name'] = label_encoder.fit_transform(new_data['Country Name'].astype(str))
 
 # Make predictions using the loaded model
 prediction = loaded_model.predict(new_data)
 
 # Display the prediction
 st.write(f'Predicted GDP: {prediction[0]}')
+
